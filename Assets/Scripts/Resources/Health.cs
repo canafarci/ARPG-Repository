@@ -10,12 +10,15 @@ namespace RPG.Resources
     {
         private bool isDead = false;
 
-        [SerializeField] float healthPoints = 100f;
+        float healthPoints = -1f;
         float maxHealth;
 
         private void Start() 
-        {
-            healthPoints = GetComponent<BaseStats>().GetHealth();
+        {   
+            if (healthPoints < 0)
+            {
+                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
+            }    
             maxHealth = healthPoints;
         }
 
@@ -41,7 +44,7 @@ namespace RPG.Resources
         {
             Experience experience = instigator.GetComponent<Experience>();
             if (experience == null) { return; }
-            experience.GainExperience(GetComponent<BaseStats>().GetExperienceReward());
+            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperiencePoints));
         }
 
         private void Die()

@@ -11,14 +11,30 @@ namespace RPG.Stats
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
 
-        public float GetHealth()
+        public float GetStat(Stat stat)
         {
-            return progression.GetStat(Stat.Health ,characterClass, startingLevel);
+            return progression.GetStat(stat ,characterClass, startingLevel);
         }
 
-        public float GetExperienceReward()
+
+        public int GetLevel()
         {
-            return progression.GetStat(Stat.ExperiencePoints, characterClass, startingLevel);
+            Experience experience = GetComponent<Experience>();
+
+            if (experience == null) { return startingLevel; }
+
+            float currentXP = GetComponent<Experience>().GetExperience();
+            int maxLevel = progression.GetLevels(characterClass);
+            for (int level = 1; level <= maxLevel; level++)
+            {
+                float xPtoLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
+                if(xPtoLevelUp > currentXP)
+                {
+                    return level;
+                }               
+            }
+
+            return maxLevel + 1;
         }
     }
 }

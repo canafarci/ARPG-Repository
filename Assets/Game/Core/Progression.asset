@@ -16,24 +16,41 @@ MonoBehaviour:
   - characterClass: 0
     level:
     - health: 50
-      damage: 0
+      experiencePoints: 0
+      experienceToLevelUp: 10
     - health: 100
-      damage: 0
+      experiencePoints: 0
+      experienceToLevelUp: 30
     - health: 200
-      damage: 0
+      experiencePoints: 0
+      experienceToLevelUp: 50
     - health: 300
-      damage: 0
+      experiencePoints: 0
+      experienceToLevelUp: 70
     - health: 400
-      damage: 0
+      experiencePoints: 0
+      experienceToLevelUp: 80
     - health: 500
-      damage: 0
+      experiencePoints: 0
+      experienceToLevelUp: 90
   - characterClass: 1
     level:
     - health: 20
-      damage: 0
+      experiencePoints: 10
+      experienceToLevelUp: 0
+    - health: 30
+      experiencePoints: 15
+      experienceToLevelUp: 0
     - health: 50
-      damage: 0
+      experiencePoints: 25
+      experienceToLevelUp: 0
   - characterClass: 2
     level: []
   - characterClass: 3
-    level: []
+    level:
+    - health: 15
+      experiencePoints: 30
+      experienceToLevelUp: 0
+    - health: 25
+      experiencePoints: 50
+      experienceToLevelUp: 0
