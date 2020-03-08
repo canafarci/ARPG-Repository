@@ -1,0 +1,167 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4687814512892471288
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6539726796448208027}
+    m_Modifications:
+    - target: {fileID: 100004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_Name
+      value: Short Bow
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7df2ba1c68b250444b9c859f7334bb48, type: 3}
+--- !u!1001 &5767449664653654347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7295733286074784883, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_Name
+      value: Short Bow Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348197973560028323, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.81617343
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348197973560028323, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 1.0589461
+      objectReference: {fileID: 0}
+    - target: {fileID: 8348197973560028323, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.27576745
+      objectReference: {fileID: 0}
+    - target: {fileID: 3492461777238441222, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: pickupPrefab
+      value: 
+      objectReference: {fileID: 11400000, guid: f16cbcf41ca10e54ba5d592275247fc0,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0b4f9bd551bc4bf49b8175ef62300177, type: 3}
+--- !u!4 &6539726796448208027 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+    type: 3}
+  m_PrefabInstance: {fileID: 5767449664653654347}
+  m_PrefabAsset: {fileID: 0}

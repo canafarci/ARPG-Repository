@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5958888c8577e744ea51a3fe35bd1665, type: 3}
+  m_Name: Short Bow Homing
+  m_EditorClassIdentifier: 
+  animatorOverride: {fileID: 22100000, guid: 21b2b3de152884a44802791ef17c0e87, type: 2}
+  weaponPrefab: {fileID: 7518242151775749725, guid: b09a467049f346147a849f1488c947c3,
+    type: 3}
+  weaponRange: 10
+  weaponDamage: 5
+  isRightHanded: 0
+  projectile: {fileID: 8359861862875325998, guid: 5ee1b517e4052644489757f206845543,
+    type: 3}
