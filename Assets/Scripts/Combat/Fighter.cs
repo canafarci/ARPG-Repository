@@ -3,11 +3,13 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Resources;
+using RPG.Stats;
+using System.Collections.Generic;
 
 namespace RPG.Combat
 {
 
-    public class Fighter : MonoBehaviour,IAction, ISaveable
+    public class Fighter : MonoBehaviour,IAction, ISaveable, IModifierProvider
     {
 
         [SerializeField] float timeBetweenAttacks;        
@@ -72,13 +74,16 @@ namespace RPG.Combat
         void Hit()
         {   
             if(target == null)  { return; }
+
+            float damage = GetComponent<BaseStats>().GetStat(Stat.Damage);
+
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
+                currentWeapon.LaunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
             }
             else
-            {
-                target.TakeDamage(gameObject, currentWeapon.GetWeaponDamage());
+            {                
+                target.TakeDamage(gameObject, damage);
             }            
         }
 
@@ -105,6 +110,13 @@ namespace RPG.Combat
             target = combatTarget.GetComponent<Health>();
         }
 
+        public void EquipWeapon(Weapon weapon)
+        {
+            currentWeapon = weapon;
+            Animator animator = GetComponent<Animator>();
+            currentWeapon.Spawn(rightHandTransform, leftHandTransform, animator);
+        }
+
         public void Cancel()
         {
             StopAttack();
@@ -118,11 +130,20 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("stopAttack");
         }
 
-        public void EquipWeapon(Weapon weapon)
-        {               
-            currentWeapon = weapon;
-            Animator animator = GetComponent<Animator>();
-            currentWeapon.Spawn(rightHandTransform, leftHandTransform, animator);
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetWeaponDamage();
+            }
+        }
+
+        public IEnumerable<float> GetPercentageModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetPercentageBonus();
+            }
         }
 
         public object CaptureState()
@@ -134,7 +155,7 @@ namespace RPG.Combat
         {
             Weapon weaponToLoad = UnityEngine.Resources.Load<Weapon>((string)state);
             EquipWeapon(weaponToLoad);
-        }
+        }       
     }
 
 

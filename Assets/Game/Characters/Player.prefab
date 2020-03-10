@@ -14,19 +14,6 @@ CapsuleCollider:
   m_Height: 2.12
   m_Direction: 1
   m_Center: {x: 0, y: 0.85, z: 0}
---- !u!114 &7540689447472502050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6813594208024292331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbb51c5482d34144a7b7eaac0b64c68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxSpeed: 6
 --- !u!114 &4128081954400370705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40,6 +27,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experiencePoints: 0
+--- !u!114 &7540689447472502050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813594208024292331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbb51c5482d34144a7b7eaac0b64c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 6
 --- !u!1001 &6903933978578845792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -203,6 +203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: characterClass
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069527915940631166, guid: 020bbd774093a8546a615856f89dc669,
+        type: 3}
+      propertyPath: shouldUseModifiers
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5089931062790825798, guid: 020bbd774093a8546a615856f89dc669,
         type: 3}

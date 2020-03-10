@@ -7,6 +7,9 @@ namespace RPG.Resources
 {
     public class StatDisplay : MonoBehaviour
     {
+        float healthMax;
+        float healthCurrent;
+
         Health health;
         Experience experience;
         BaseStats playerStats;
@@ -23,7 +26,7 @@ namespace RPG.Resources
 
         private void Update() 
         {
-            healthDisplay.text =  String.Format("Health : {0:0.00}% " , health.GetHealthPercentage());
+            healthDisplay.text =  String.Format("Health : {0:0}/{1:0}", health.GetCurrentHealth(), health.GetMaxHealth());
             experienceDisplay.text = String.Format("Experience : {0:0}", experience.GetExperience());
             levelDisplay.text = String.Format("Level : {0:0}", playerStats.GetLevel());
         }

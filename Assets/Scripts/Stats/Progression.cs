@@ -9,13 +9,13 @@ namespace RPG.Stats
     {
         [SerializeField] ProgressionCharacterClass[] characterClasses;
 
-        Dictionary<CharacterClass, Dictionary<int, Dictionary<Stat, float>>> lookupTable = null;
+        Dictionary<CharacterClass, Dictionary<float, Dictionary<Stat, float>>> lookupTable = null;
 
-        public float GetStat(Stat stat, CharacterClass setCharacterClass, int setLevel)
+        public float GetStat(Stat stat, CharacterClass setCharacterClass, float setLevel)
         {
             BuildLookup();
 
-            int levelCount = lookupTable[setCharacterClass].Count;
+            float levelCount = lookupTable[setCharacterClass].Count;
             if (levelCount < setLevel)
             {
                 return 0;
@@ -36,10 +36,10 @@ namespace RPG.Stats
         {
             if (lookupTable != null) { return; }
 
-            lookupTable = new Dictionary<CharacterClass, Dictionary<int, Dictionary<Stat, float>>>();
+            lookupTable = new Dictionary<CharacterClass, Dictionary<float, Dictionary<Stat, float>>>();
 
             foreach (ProgressionCharacterClass progressionClass in characterClasses)
-            {   var levelLookupTable = new Dictionary<int, Dictionary<Stat, float>>();
+            {   var levelLookupTable = new Dictionary<float, Dictionary<Stat, float>>();
 
                 foreach (ProgressionCharacterLevel statlevel in progressionClass.level)
                 {
@@ -70,6 +70,7 @@ namespace RPG.Stats
             public float health;
             public float experiencePoints;
             public float experienceToLevelUp;
+            public float damage;
 
             public float GetStatType(Stat statType)
             {
@@ -86,6 +87,11 @@ namespace RPG.Stats
                 if (statType == Stat.ExperienceToLevelUp)
                 {
                     return experienceToLevelUp;
+                }
+
+                if (statType == Stat.Damage)
+                {
+                    return damage;
                 }
 
                 return 0;

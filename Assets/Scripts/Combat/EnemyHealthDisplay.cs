@@ -7,6 +7,9 @@ namespace RPG.Combat
 {
     public class EnemyHealthDisplay : MonoBehaviour
     {
+        float maxHealth;
+        float currentHealth;
+
         Fighter playerFighter;
         [SerializeField] Text healthDisplay;
 
@@ -24,7 +27,10 @@ namespace RPG.Combat
                 return;
             }
             
-            healthDisplay.text = String.Format("Enemy : {0:0.00}% ", health.GetHealthPercentage());          
+            maxHealth = health.GetMaxHealth();
+            currentHealth = health.GetCurrentHealth();
+
+            healthDisplay.text = String.Format("Enemy : {0:0}/{1:0}", currentHealth, maxHealth);          
         }
     }
 }

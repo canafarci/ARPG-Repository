@@ -13,13 +13,38 @@ namespace RPG.Resources
         float healthPoints = -1f;
         float maxHealth;
 
+        BaseStats statSystem;
+
+        private void Awake() 
+        {
+            statSystem = GetComponent<BaseStats>();
+        }
+
+        private void OnEnable() 
+        {
+            statSystem.onLevelUp += UpdateHealth;
+        }
+
         private void Start() 
-        {   
+        {        
             if (healthPoints < 0)
             {
-                healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
-            }    
-            maxHealth = healthPoints;
+                healthPoints = statSystem.GetStat(Stat.Health);
+            }
+            
+            maxHealth = healthPoints;               
+        }
+
+        private void OnDisable() 
+        {
+            statSystem.onLevelUp -= UpdateHealth;
+        }
+
+        public void UpdateHealth()
+        {  
+            float currentPercentage = GetHealthPercentage() / 100;
+            maxHealth = statSystem.GetStat(Stat.Health);
+            healthPoints = maxHealth * currentPercentage;
         }
 
         public bool IsDead()
@@ -29,22 +54,38 @@ namespace RPG.Resources
 
         public void TakeDamage(GameObject instigator, float damage)
         {
+            print(gameObject.name + " took damage " + damage);
+
             healthPoints = Mathf.Max(healthPoints - damage, 0);
-            print(healthPoints);
+            
             if (healthPoints == 0)
             {
                 AwardExperience(instigator);
                 //Animation Event
                 Die();
-            }
-            
+            }            
         }
 
         private void AwardExperience(GameObject instigator)
         {
             Experience experience = instigator.GetComponent<Experience>();
             if (experience == null) { return; }
-            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperiencePoints));
+            experience.GainExperience(statSystem.GetStat(Stat.ExperiencePoints));
+        }
+
+        public float GetHealthPercentage()
+        {
+            return healthPoints / maxHealth * 100;
+        }
+
+        public float GetMaxHealth()
+        {
+            return statSystem.GetStat(Stat.Health);
+        }
+
+        public float GetCurrentHealth()
+        {
+            return healthPoints;
         }
 
         private void Die()
@@ -53,11 +94,6 @@ namespace RPG.Resources
             GetComponent<Animator>().SetTrigger("die");
             isDead = true;
             GetComponent<ActionScheduler>().CancelCurrentAction();
-        }
-
-        public float GetHealthPercentage()
-        {
-            return healthPoints / maxHealth * 100;
         }
 
         public object CaptureState()
