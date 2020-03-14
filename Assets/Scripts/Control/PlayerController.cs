@@ -2,49 +2,87 @@
 using RPG.Combat;
 using UnityEngine;
 using RPG.Resources;
+using System;
+using UnityEngine.EventSystems;
 
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
-{
-    Health health;
-    
-    void Awake()
     {
-        health = GetComponent<Health>();
-    }
+        Health health;       
 
-    
-    void Update()
+        [System.Serializable]
+        struct CursorMapping
         {
-            if (health.IsDead()) { return; }
-
-            if (InteractWithCombat()) {return;}
-            if (InteractWithMovement()) {return;}          
+            public CursorType type;
+            public Texture2D texture;
+            public Vector2 hotspot;
         }
 
-        private bool InteractWithCombat()
+        [SerializeField] CursorMapping[] cursorMappings = null;
+        
+        void Awake()
         {
-            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());  
+            health = GetComponent<Health>();
+        }
+        
+        void Update()
+        {
+            if (InteractWithUI()) { return; }
+            if (health.IsDead())
+            {
+                SetCursor(CursorType.None);
+                return; 
+            }
+
+            if (InteractWithComponent()) { return; }
+            if (InteractWithMovement()) { return; }
+
+            SetCursor(CursorType.None);
+        }
+
+        private bool InteractWithComponent()
+        {
+            RaycastHit[] hits = RaycastAllSorted();
             foreach (RaycastHit hit in hits)
             {
-                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if (target == null) { continue; }
-
-                if (!GetComponent<Fighter>().CanAttack(target.gameObject))
+                IRaycastable[] raycastables =  hit.transform.GetComponents<IRaycastable>();
+                foreach (IRaycastable raycastable in raycastables)
                 {
-                    continue;
+                    if (raycastable.HandleRaycast(this))
+                    {
+                        SetCursor(raycastable.GetCursorType());
+                        return true;
+                    }
                 }
-                      
-                if (Input.GetMouseButton(0))
-                {
-                 GetComponent<Fighter>().Attack(target.gameObject);
-                }
-                return true;
             }
             return false;
         }
 
+        RaycastHit[] RaycastAllSorted()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            float[] distances = new float[hits.Length];
+            for (int i = 0; i < hits.Length; i++)
+            {
+                distances[i] = hits[i].distance;
+            }
+            Array.Sort(distances, hits);
+
+            return hits;
+        }
+
+        private bool InteractWithUI()
+        {                       
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
+                return true;
+            }
+
+            return false;           
+        }
+        
         private bool InteractWithMovement()
         {
             RaycastHit hit;
@@ -55,10 +93,28 @@ namespace RPG.Control
                 {
                     GetComponent<Mover>().StartMoveAction(hit.point,1f);
                 }
-
+                SetCursor(CursorType.Movement);
                 return true;
             }
              return false;
+        }
+
+        private void SetCursor(CursorType type)
+        {
+            CursorMapping mapping = GetCursorMapping(type);
+            Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.ForceSoftware);
+        }
+
+        private CursorMapping GetCursorMapping(CursorType type)
+        {
+            foreach (CursorMapping mapping in cursorMappings)
+            {
+                if (mapping.type == type)
+                {
+                    return mapping;
+                }
+            }
+            return cursorMappings[0];
         }
 
         private static Ray GetMouseRay()

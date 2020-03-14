@@ -28,6 +28,8 @@ namespace RPG.Cinematics
 
         void DisableControl(PlayableDirector pd)
         {
+            GameObject player = GameObject.FindWithTag("Player");
+            
             player.GetComponent<ActionScheduler>().CancelCurrentAction();
             player.GetComponent<PlayerController>().enabled = false;
         }

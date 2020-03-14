@@ -52,13 +52,11 @@ namespace RPG.SceneManagement
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
-
             
-
             yield return new WaitForSeconds(fadeWaitTime);
-            yield return fader.FadeIn(fadeInTime);
             savingWrapper.Save();
-            
+            yield return fader.FadeIn(fadeInTime);
+                        
             Destroy(gameObject);
         }
 
