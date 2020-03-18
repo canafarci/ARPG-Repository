@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using RPG.Core;
-using RPG.Resources;
+using RPG.Attributes;
 using RPG.Saving;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,9 +11,11 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float maxSpeed = 6f;
+        [SerializeField] float maxNavMeshLength = 40f;
         
         NavMeshAgent navMeshAgent;
         Health health;
+        Transform target;
 
         void Start()
         {
@@ -40,11 +42,35 @@ namespace RPG.Movement
             navMeshAgent.isStopped = true;
         }
 
+        public bool CanMoveTo(Vector3 destination)
+        {
+            NavMeshPath path = new NavMeshPath();
+            bool hasPath = NavMesh.CalculatePath(transform.position, destination, NavMesh.AllAreas, path);
+            if (!hasPath) { return false; }
+            if (path.status != NavMeshPathStatus.PathComplete) { return false; }
+            if (GetPathLength(path) > maxNavMeshLength) { return false; }
+
+            return true;
+        }
+
         public void MoveTo(Vector3 destination, float speedFraction)
         {
             navMeshAgent.destination = destination;
             navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
             navMeshAgent.isStopped = false;
+        }
+
+        private float GetPathLength(NavMeshPath path)
+        {
+            float totalLength = 0;
+            if (path.corners.Length < 2) { return totalLength; }
+
+            for (int i = 0; i < path.corners.Length - 1; i++)
+            {
+                float sectionLength = Vector3.Distance(path.corners[i], path.corners[i + 1]);
+                totalLength += sectionLength;
+            }
+            return totalLength;
         }
 
         private void UpdateAnimator()

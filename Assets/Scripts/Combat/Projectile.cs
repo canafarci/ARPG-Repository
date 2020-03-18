@@ -1,6 +1,7 @@
 using System.Collections;
-using RPG.Resources;
+using RPG.Attributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace RPG.Combat
 {
@@ -14,7 +15,7 @@ namespace RPG.Combat
         [SerializeField] float endParticleDestroyDelay = 0f;
         [SerializeField] GameObject endParticleEffect;
         [SerializeField] GameObject[] travelParticles;
-        
+        [SerializeField] UnityEvent onHit;        
         float damage = 0f;
         GameObject instigator = null;
         Health currentTarget;
@@ -55,6 +56,7 @@ namespace RPG.Combat
 
             currentTarget.TakeDamage(instigator, damage);
             speed = 0f;
+            onHit.Invoke();
             if (!isPersistenParticleEffect) { Destroy(gameObject); }
             PersistentEffects();
         }

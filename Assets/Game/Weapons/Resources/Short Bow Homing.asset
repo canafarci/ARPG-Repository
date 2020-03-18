@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Short Bow Homing
   m_EditorClassIdentifier: 
   animatorOverride: {fileID: 22100000, guid: 21b2b3de152884a44802791ef17c0e87, type: 2}
-  weaponPrefab: {fileID: 7518242151775749725, guid: b09a467049f346147a849f1488c947c3,
+  weaponPrefab: {fileID: 4458786538327484330, guid: b09a467049f346147a849f1488c947c3,
     type: 3}
   weaponRange: 10
   weaponDamage: 5

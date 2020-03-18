@@ -1,15 +1,22 @@
-using System;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
 using UnityEngine;
+using UnityEngine.Events;
 
-namespace RPG.Resources
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
-        private bool isDead = false;
+        [SerializeField] TakeDamageEvent takeDamage;
+        [SerializeField] UnityEvent onDie;
 
+        [System.Serializable]
+        public class TakeDamageEvent : UnityEvent<float>
+        {        
+        }
+
+        bool isDead = false;
         float healthPoints = -1f;
         float maxHealth;
 
@@ -25,14 +32,9 @@ namespace RPG.Resources
             statSystem.onLevelUp += UpdateHealth;
         }
 
-        private void Start() 
-        {        
-            if (healthPoints < 0)
-            {
-                healthPoints = statSystem.GetStat(Stat.Health);
-            }
-            
-            maxHealth = healthPoints;               
+        private void Start()
+        {
+            InitialHealth();
         }
 
         private void OnDisable() 
@@ -40,11 +42,25 @@ namespace RPG.Resources
             statSystem.onLevelUp -= UpdateHealth;
         }
 
+        private void InitialHealth()
+        {
+            if (healthPoints < 0)
+            {
+                healthPoints = statSystem.GetStat(Stat.Health);
+            }
+            maxHealth = statSystem.GetStat(Stat.Health);
+        }
+
         public void UpdateHealth()
         {  
-            float currentPercentage = GetHealthPercentage() / 100;
+            float currentHealthFraction = GetHealthFraction();
             maxHealth = statSystem.GetStat(Stat.Health);
-            healthPoints = maxHealth * currentPercentage;
+            healthPoints = maxHealth * currentHealthFraction;
+        }
+
+        public void Heal(float healingAmount)
+        {
+           healthPoints = Mathf.Min(healthPoints += healingAmount, maxHealth);
         }
 
         public bool IsDead()
@@ -54,15 +70,18 @@ namespace RPG.Resources
 
         public void TakeDamage(GameObject instigator, float damage)
         {
-            print(gameObject.name + " took damage " + damage);
-
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             
             if (healthPoints == 0)
             {
+                onDie.Invoke();
                 AwardExperience(instigator);
                 //Animation Event
                 Die();
+            }
+            else
+            {
+                takeDamage.Invoke(damage);
             }            
         }
 
@@ -75,7 +94,12 @@ namespace RPG.Resources
 
         public float GetHealthPercentage()
         {
-            return healthPoints / maxHealth * 100;
+            return GetHealthFraction() * 100;
+        }
+
+        public float GetHealthFraction()
+        {
+            return healthPoints / maxHealth;
         }
 
         public float GetMaxHealth()

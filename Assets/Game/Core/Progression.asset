@@ -41,15 +41,15 @@ MonoBehaviour:
       damage: 25
   - characterClass: 1
     level:
-    - health: 20
+    - health: 100
       experiencePoints: 10
       experienceToLevelUp: 0
       damage: 5
-    - health: 30
+    - health: 150
       experiencePoints: 15
       experienceToLevelUp: 0
       damage: 10
-    - health: 50
+    - health: 200
       experiencePoints: 25
       experienceToLevelUp: 0
       damage: 20

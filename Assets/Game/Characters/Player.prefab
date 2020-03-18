@@ -14,6 +14,36 @@ CapsuleCollider:
   m_Height: 2.12
   m_Direction: 1
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &1614158246053342480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813594208024292331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad807381de1bef942a915641adfd9611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorMappings:
+  - type: 0
+    texture: {fileID: 2800000, guid: 0f1fd2b3447f46146aa3dd24e975f324, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 1
+    texture: {fileID: 2800000, guid: f08437049478cef49beacacd5299e8a8, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 2
+    texture: {fileID: 2800000, guid: d8e4b60fa90856c45867db7230b38e3d, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 3
+    texture: {fileID: 2800000, guid: 550af32f474aa3142b830a59e286eb5e, type: 3}
+    hotspot: {x: 0, y: 0}
+  - type: 4
+    texture: {fileID: 2800000, guid: ca0af662805cb5b4d8172b35693f7176, type: 3}
+    hotspot: {x: 0, y: 0}
+  maxNavMeshProjectionDistance: 1
+  maxNavMeshLength: 40
 --- !u!114 &4128081954400370705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +219,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4530043422702791024, guid: 020bbd774093a8546a615856f89dc669,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8846923678989435529, guid: 020bbd774093a8546a615856f89dc669,
         type: 3}
       propertyPath: m_Enabled
@@ -208,6 +243,21 @@ PrefabInstance:
         type: 3}
       propertyPath: shouldUseModifiers
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 701075762321893032, guid: 020bbd774093a8546a615856f89dc669,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 701075762321893032, guid: 020bbd774093a8546a615856f89dc669,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2831220400165953874}
+    - target: {fileID: 701075762321893032, guid: 020bbd774093a8546a615856f89dc669,
+        type: 3}
+      propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Spawn
       objectReference: {fileID: 0}
     - target: {fileID: 5089931062790825798, guid: 020bbd774093a8546a615856f89dc669,
         type: 3}
@@ -315,3 +365,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8779156533331997475}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2831220400165953874 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6818264767786291825, guid: 020bbd774093a8546a615856f89dc669,
+    type: 3}
+  m_PrefabInstance: {fileID: 8779156533331997475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cdd31d95f79c524b90824da022a9b32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
