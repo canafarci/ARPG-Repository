@@ -7,7 +7,7 @@ namespace RPG.Stats
 {
     public class BaseStats : MonoBehaviour
     {
-        [Range(1,99)]
+        [Range(1, 99)]
         [SerializeField] int startingLevel = 1;
         [SerializeField] CharacterClass characterClass;
         [SerializeField] Progression progression = null;
@@ -16,46 +16,45 @@ namespace RPG.Stats
 
         int currentLevel = 0;
 
-        public event Action onLevelUp;
+        public event Action<int> OnLevelChange;
+        public event Action<float, float> OnExperienceGained;
 
         Experience experience;
 
-        private void Awake() 
+        private void Awake()
         {
             experience = GetComponent<Experience>();
         }
-
-        private void OnEnable() 
+        private void OnEnable()
         {
             if (experience != null)
             {
-                experience.onExperienceGained += UpdateLevel;
+                experience.OnExperienceGain += UpdateLevel;
             }
         }
-
-
-        private void Start() 
+        private void Start()
         {
-            currentLevel = CalculateLevel();
+            currentLevel = CalculateLevel(experience == null ? 0 : experience.GetExperience());
+            if (experience != null)
+                OnLevelChange?.Invoke(currentLevel);
         }
 
         private void OnDisable()
         {
             if (experience != null)
             {
-                experience.onExperienceGained -= UpdateLevel;
+                experience.OnExperienceGain -= UpdateLevel;
             }
         }
 
-        private void UpdateLevel() 
+        private void UpdateLevel(float experiencePoints)
         {
-            int newLevel = CalculateLevel();
+            int newLevel = CalculateLevel(experiencePoints);
             if (newLevel > currentLevel)
             {
                 currentLevel = newLevel;
-                print("leveled up");
                 LevelUpEffect();
-                onLevelUp();
+                OnLevelChange?.Invoke(currentLevel);
             }
         }
 
@@ -76,9 +75,9 @@ namespace RPG.Stats
 
         public int GetLevel()
         {
-            if (currentLevel < 1 )
+            if (currentLevel < 1)
             {
-                currentLevel = CalculateLevel();
+                currentLevel = CalculateLevel(experience.GetExperience());
             }
             return currentLevel;
         }
@@ -113,23 +112,22 @@ namespace RPG.Stats
             return total;
         }
 
-        private int CalculateLevel()
+        private int CalculateLevel(float currentXP)
         {
-            Experience experience = GetComponent<Experience>();
-
             if (experience == null) { return startingLevel; }
-
-            float currentXP = GetComponent<Experience>().GetExperience();
+            float xPtoLevelUp = 0;
             int maxLevel = progression.GetLevels(characterClass);
             for (int level = 1; level <= maxLevel; level++)
             {
-                float xPtoLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
-                if(xPtoLevelUp > currentXP)
+                xPtoLevelUp = progression.GetStat(Stat.ExperienceToLevelUp, characterClass, level);
+                if (xPtoLevelUp > currentXP)
                 {
+                    OnExperienceGained?.Invoke(currentXP, xPtoLevelUp);
                     return level;
-                }               
+                }
             }
 
+            OnExperienceGained?.Invoke(xPtoLevelUp, xPtoLevelUp);
             return maxLevel;
         }
     }

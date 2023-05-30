@@ -293,8 +293,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 701075762321893032, guid: 020bbd774093a8546a615856f89dc669, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 020bbd774093a8546a615856f89dc669, type: 3}
+--- !u!114 &539755276350773172 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9126629075539616919, guid: 020bbd774093a8546a615856f89dc669,
+    type: 3}
+  m_PrefabInstance: {fileID: 8779156533331997475}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bac4ffc7463724782eed60ed9d53b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2831220400165953874 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6818264767786291825, guid: 020bbd774093a8546a615856f89dc669,
@@ -441,3 +454,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   maxNavMeshLength: 40
+--- !u!114 &5108666788859759506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813594208024292331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e90a678a97ef4b689cd48ead112c52b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  takeDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2831220400165953874}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: Spawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 13
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 539755276350773172}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: PlayDamageSounds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 539755276350773172}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: PlayDieSounds
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

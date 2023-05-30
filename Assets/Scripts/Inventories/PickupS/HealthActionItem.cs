@@ -11,6 +11,6 @@ public class HealthActionItem : ActionItem
     public override void Use(GameObject user)
     {
         base.Use(user);
-        user.GetComponent<Health>().Heal(healingAmount);
+        user.GetComponent<PlayerHealth>().Heal(healingAmount);
     }
 }

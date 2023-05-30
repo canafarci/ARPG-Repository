@@ -19,7 +19,7 @@ namespace RPG.Combat
                 Pickup(other.gameObject);
             }
 
-            else { return ;}
+            else { return; }
         }
 
         private void Pickup(GameObject playerObject)
@@ -28,11 +28,11 @@ namespace RPG.Combat
             {
                 playerObject.GetComponent<Fighter>().EquipWeapon(pickupPrefab);
             }
-            if(healthToRestore > 0)
+            if (healthToRestore > 0)
             {
-                playerObject.GetComponent<Health>().Heal(healthToRestore);
+                playerObject.GetComponent<PlayerHealth>().Heal(healthToRestore);
             }
-            
+
             StartCoroutine(HideForSeconds(respawnTime));
         }
 

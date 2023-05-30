@@ -15,33 +15,33 @@ namespace RPG.Resources
 
         BaseStats statSystem;
 
-        private void Awake() 
+        private void Awake()
         {
             statSystem = GetComponent<BaseStats>();
         }
 
-        private void OnEnable() 
+        private void OnEnable()
         {
-            statSystem.onLevelUp += UpdateHealth;
+            statSystem.OnLevelChange += UpdateHealth;
         }
 
-        private void Start() 
-        {        
+        private void Start()
+        {
             if (healthPoints < 0)
             {
                 healthPoints = statSystem.GetStat(Stat.Health);
             }
-            
-            maxHealth = healthPoints;               
+
+            maxHealth = healthPoints;
         }
 
-        private void OnDisable() 
+        private void OnDisable()
         {
-            statSystem.onLevelUp -= UpdateHealth;
+            statSystem.OnLevelChange -= UpdateHealth;
         }
 
-        public void UpdateHealth()
-        {  
+        public void UpdateHealth(int newLevel)
+        {
             float currentPercentage = GetHealthPercentage() / 100;
             maxHealth = statSystem.GetStat(Stat.Health);
             healthPoints = maxHealth * currentPercentage;
@@ -57,13 +57,13 @@ namespace RPG.Resources
             print(gameObject.name + " took damage " + damage);
 
             healthPoints = Mathf.Max(healthPoints - damage, 0);
-            
+
             if (healthPoints == 0)
             {
                 AwardExperience(instigator);
                 //Animation Event
                 Die();
-            }            
+            }
         }
 
         private void AwardExperience(GameObject instigator)
@@ -90,7 +90,7 @@ namespace RPG.Resources
 
         private void Die()
         {
-            if (isDead == true || healthPoints > 0) {return;}
+            if (isDead == true || healthPoints > 0) { return; }
             GetComponent<Animator>().SetTrigger("die");
             isDead = true;
             GetComponent<ActionScheduler>().CancelCurrentAction();

@@ -8,12 +8,12 @@ namespace RPG.Stats
     {
         [SerializeField] float experiencePoints = 0;
 
-        public event Action onExperienceGained;
+        public event Action<float> OnExperienceGain;
 
         public void GainExperience(float experience)
         {
             experiencePoints += experience;
-            onExperienceGained();
+            OnExperienceGain?.Invoke(experiencePoints);
         }
 
         public float GetExperience()
@@ -30,6 +30,6 @@ namespace RPG.Stats
         {
             experiencePoints = (float)state;
         }
-        
+
     }
 }

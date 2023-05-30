@@ -13,23 +13,17 @@ namespace RPG.Attributes
 
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
-        {        
+        {
         }
-
+        protected float maxHealth;
+        protected float healthPoints = -1f;
         bool isDead = false;
-        float healthPoints = -1f;
-        float maxHealth;
 
-        BaseStats statSystem;
+        protected BaseStats statSystem;
 
-        private void Awake() 
+        private void Awake()
         {
             statSystem = GetComponent<BaseStats>();
-        }
-
-        private void OnEnable() 
-        {
-            statSystem.onLevelUp += UpdateHealth;
         }
 
         private void Start()
@@ -37,12 +31,7 @@ namespace RPG.Attributes
             InitialHealth();
         }
 
-        private void OnDisable() 
-        {
-            statSystem.onLevelUp -= UpdateHealth;
-        }
-
-        private void InitialHealth()
+        protected virtual void InitialHealth()
         {
             if (healthPoints < 0)
             {
@@ -50,28 +39,16 @@ namespace RPG.Attributes
             }
             maxHealth = statSystem.GetStat(Stat.Health);
         }
-
-        public void UpdateHealth()
-        {  
-            float currentHealthFraction = GetHealthFraction();
-            maxHealth = statSystem.GetStat(Stat.Health);
-            healthPoints = maxHealth * currentHealthFraction;
-        }
-
-        public void Heal(float healingAmount)
-        {
-           healthPoints = Mathf.Min(healthPoints += healingAmount, maxHealth);
-        }
-
         public bool IsDead()
         {
             return isDead;
         }
 
-        public void TakeDamage(GameObject instigator, float damage)
+        public virtual void TakeDamage(GameObject instigator, float damage)
         {
+            if (isDead) return;
             healthPoints = Mathf.Max(healthPoints - damage, 0);
-            
+
             if (healthPoints == 0)
             {
                 onDie.Invoke();
@@ -82,7 +59,7 @@ namespace RPG.Attributes
             else
             {
                 takeDamage.Invoke(damage);
-            }            
+            }
         }
 
         private void AwardExperience(GameObject instigator)
@@ -114,7 +91,7 @@ namespace RPG.Attributes
 
         private void Die()
         {
-            if (isDead == true || healthPoints > 0) {return;}
+            if (isDead == true || healthPoints > 0) { return; }
             GetComponent<Animator>().SetTrigger("die");
             isDead = true;
             GetComponent<ActionScheduler>().CancelCurrentAction();
