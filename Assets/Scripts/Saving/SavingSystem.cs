@@ -22,13 +22,13 @@ namespace RPG.Saving
                     yield return SceneManager.LoadSceneAsync(buildIndex);
                 }
             }
-            
+
             RestoreState(state);
         }
 
         public void Save(string saveFile)
         {
-            Dictionary<string, object> state =  LoadFile(saveFile);
+            Dictionary<string, object> state = LoadFile(saveFile);
             CaptureState(state);
             SaveFile(saveFile, state);
         }
@@ -42,7 +42,6 @@ namespace RPG.Saving
         {
             string path = GetPathFromSaveFile(saveFile);
             if (!File.Exists(path)) { return; }
-
             File.Delete(path);
         }
 
@@ -65,7 +64,7 @@ namespace RPG.Saving
         {
             string path = GetPathFromSaveFile(saveFile);
             print("Saving to " + path);
-            using (FileStream stream = File.Open(path,FileMode.Create))
+            using (FileStream stream = File.Open(path, FileMode.Create))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
                 formatter.Serialize(stream, state);
@@ -90,13 +89,13 @@ namespace RPG.Saving
                 if (state.ContainsKey(id))
                 {
                     saveable.RestoreState(state[id]);
-                }                
+                }
             }
         }
 
         private string GetPathFromSaveFile(string saveFile)
         {
-            var fileDirectoryPath =  Path.Combine(Application.persistentDataPath , "saves");
+            var fileDirectoryPath = Path.Combine(Application.persistentDataPath, "saves");
 
             if (!Directory.Exists(fileDirectoryPath))
             {

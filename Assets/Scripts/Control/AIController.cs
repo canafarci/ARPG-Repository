@@ -15,7 +15,7 @@ namespace RPG.Control
         [SerializeField] float waypointTolerance = 1f;
         [SerializeField] float waypointDwellingTime = 2.5f;
         [SerializeField] float aggrevateRadius = 5f;
-        [Range(0,1)]
+        [Range(0, 1)]
         [SerializeField] float patrolSpeedFraction = 0.2f;
         [SerializeField] PatrolPath patrolPath;
 
@@ -31,7 +31,7 @@ namespace RPG.Control
         Mover mover;
         Vector3 guardPosition;
 
-        private void Awake() 
+        private void Awake()
         {
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
@@ -39,8 +39,8 @@ namespace RPG.Control
             player = GameObject.FindWithTag("Player");
         }
 
-        private void Start() 
-        {            
+        private void Start()
+        {
             guardPosition = transform.position;
         }
 
@@ -84,7 +84,7 @@ namespace RPG.Control
 
             if (patrolPath != null)
             {
-                if(AtWaypoint())
+                if (AtWaypoint())
                 {
                     timeSinceArrivedAtWaypoint = 0;
                     CycleWaypoint();
@@ -94,12 +94,12 @@ namespace RPG.Control
 
             if (timeSinceArrivedAtWaypoint > waypointDwellingTime)
             {
-                mover.StartMoveAction(nextPosition,patrolSpeedFraction);
-            }            
+                mover.StartMoveAction(nextPosition, patrolSpeedFraction);
+            }
         }
 
         private bool AtWaypoint()
-        {   
+        {
             float distanceToWaypoint = Vector3.Distance(transform.position, GetCurrentWaypoint());
             return distanceToWaypoint < waypointTolerance;
         }
@@ -130,10 +130,10 @@ namespace RPG.Control
 
         private void AggrevateNearbyEnemies()
         {
-            RaycastHit[] hits =  Physics.SphereCastAll(transform.position, aggrevateRadius, Vector3.up, 0);
-            
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, aggrevateRadius, Vector3.up, 0);
+
             for (int i = 0; i < hits.Length; i++)
-            {   
+            {
                 AIController ai = hits[i].transform.GetComponent<AIController>();
                 if (ai != null)
                 {
@@ -149,7 +149,8 @@ namespace RPG.Control
         }
 
         //Called by Unity
-        private void OnDrawGizmosSelected() {
+        private void OnDrawGizmosSelected()
+        {
             Gizmos.color = Color.blue;
             Gizmos.DrawWireSphere(transform.position, chaseDistance);
         }

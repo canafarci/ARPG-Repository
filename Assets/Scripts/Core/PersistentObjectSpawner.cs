@@ -9,9 +9,9 @@ namespace RPG.Core
 
         static bool hasSpawned = false;
 
-        private void Awake() 
+        private void Awake()
         {
-            if (hasSpawned) {return;}
+            if (hasSpawned) { return; }
 
             SpawnPersistentObjects();
 

@@ -12,12 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5958888c8577e744ea51a3fe35bd1665, type: 3}
   m_Name: Short Bow Homing
   m_EditorClassIdentifier: 
+  itemID: c3b805ce-a0dc-4ae8-acfb-4022456b7543
+  displayName: 
+  description: 
+  icon: {fileID: 0}
+  pickup: {fileID: 5902861085470663333, guid: acbb308d72b87344da12827e55edeff6, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: 21b2b3de152884a44802791ef17c0e87, type: 2}
-  weaponPrefab: {fileID: 4458786538327484330, guid: b09a467049f346147a849f1488c947c3,
+  equippedPrefab: {fileID: 4458786538327484330, guid: b09a467049f346147a849f1488c947c3,
     type: 3}
-  weaponRange: 10
   weaponDamage: 5
   percentageBonus: 10
+  weaponRange: 10
   isRightHanded: 0
   projectile: {fileID: 8359861862875325998, guid: 5ee1b517e4052644489757f206845543,
     type: 3}

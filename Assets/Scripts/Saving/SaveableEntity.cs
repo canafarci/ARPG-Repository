@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 namespace RPG.Saving
-{   
+{
     [ExecuteAlways]
     public class SaveableEntity : MonoBehaviour
     {
@@ -39,7 +39,7 @@ namespace RPG.Saving
                 {
                     saveable.RestoreState(stateDict[typeString]);
                 }
-            }            
+            }
         }
 
 #if UNITY_EDITOR
@@ -49,8 +49,8 @@ namespace RPG.Saving
             if (string.IsNullOrEmpty(gameObject.scene.path)) { return; }
 
             SerializedObject serializedObject = new SerializedObject(this);
-            SerializedProperty property =  serializedObject.FindProperty("uniqueIdentifier");
-            
+            SerializedProperty property = serializedObject.FindProperty("uniqueIdentifier");
+
             if (string.IsNullOrEmpty(property.stringValue) || !IsUnique(property.stringValue))
             {
                 property.stringValue = System.Guid.NewGuid().ToString();
@@ -60,7 +60,6 @@ namespace RPG.Saving
             globalLookup[property.stringValue] = this;
         }
 #endif 
-
         private bool IsUnique(string candidate)
         {
             if (!globalLookup.ContainsKey(candidate)) { return true; }
@@ -78,7 +77,7 @@ namespace RPG.Saving
                 globalLookup.Remove(candidate);
                 return true;
             }
-            
+
             return false;
         }
     }

@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.000971023, y: -0.0020008087, z: 0.39764008}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5170226275946505323}
   m_RootOrder: 1
@@ -43,9 +44,12 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -57,6 +61,7 @@ TrailRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -142,24 +147,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4949136327244319978, guid: 80eeb300a26228f459d712e71bd981f2,
-        type: 3}
-      propertyPath: m_Name
-      value: ArrowProjectile Pre-Aimed
-      objectReference: {fileID: 0}
-    - target: {fileID: 43400935231533399, guid: 80eeb300a26228f459d712e71bd981f2,
-        type: 3}
-      propertyPath: travelParticles.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 43400935231533399, guid: 80eeb300a26228f459d712e71bd981f2,
         type: 3}
       propertyPath: isHoming
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 43400935231533399, guid: 80eeb300a26228f459d712e71bd981f2,
-        type: 3}
-      propertyPath: isPersistenParticleEffect
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 43400935231533399, guid: 80eeb300a26228f459d712e71bd981f2,
@@ -170,6 +160,21 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 43400935231533399, guid: 80eeb300a26228f459d712e71bd981f2,
         type: 3}
+      propertyPath: endParticleDestroyDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 43400935231533399, guid: 80eeb300a26228f459d712e71bd981f2,
+        type: 3}
+      propertyPath: isPersistenParticleEffect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 43400935231533399, guid: 80eeb300a26228f459d712e71bd981f2,
+        type: 3}
+      propertyPath: travelParticles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 43400935231533399, guid: 80eeb300a26228f459d712e71bd981f2,
+        type: 3}
       propertyPath: travelParticles.Array.data[0]
       value: 
       objectReference: {fileID: 4441929343863851034}
@@ -178,10 +183,20 @@ PrefabInstance:
       propertyPath: travelParticles.Array.data[1]
       value: 
       objectReference: {fileID: 2129016037910183618}
-    - target: {fileID: 43400935231533399, guid: 80eeb300a26228f459d712e71bd981f2,
+    - target: {fileID: 1820869880890532208, guid: 80eeb300a26228f459d712e71bd981f2,
         type: 3}
-      propertyPath: endParticleDestroyDelay
-      value: 1
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4949136327244319978, guid: 80eeb300a26228f459d712e71bd981f2,
+        type: 3}
+      propertyPath: m_Name
+      value: ArrowProjectile Pre-Aimed
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
         type: 3}
@@ -200,6 +215,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -211,16 +231,6 @@ PrefabInstance:
     - target: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
@@ -240,15 +250,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 80eeb300a26228f459d712e71bd981f2, type: 3}
---- !u!4 &5170226275946505323 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 3573863639413672044}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4441929343863851034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 881594192576135286, guid: 80eeb300a26228f459d712e71bd981f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3573863639413672044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5170226275946505323 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8527776368572853255, guid: 80eeb300a26228f459d712e71bd981f2,
     type: 3}
   m_PrefabInstance: {fileID: 3573863639413672044}
   m_PrefabAsset: {fileID: 0}

@@ -10,20 +10,20 @@ namespace RPG.SceneManagement
 
         [SerializeField] float fadeInTime = 0.2f;
 
-        private void Awake() 
+        private void Awake()
         {
             StartCoroutine(LoadLastScene());
         }
 
         private IEnumerator LoadLastScene()
-        {            
+        {
             yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFile);
             Fader fader = FindObjectOfType<Fader>();
             fader.FadeOutImmediate();
             yield return fader.FadeIn(fadeInTime);
         }
-        
-        private void Update() 
+
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F5))
             {
@@ -37,6 +37,7 @@ namespace RPG.SceneManagement
 
             if (Input.GetKeyDown(KeyCode.Delete))
             {
+                print("called");
                 Delete();
             }
         }

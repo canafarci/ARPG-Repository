@@ -4,12 +4,14 @@ using RPG.Attributes;
 using System;
 using UnityEngine.EventSystems;
 using UnityEngine.AI;
+using RPG.Inventories;
 
 namespace RPG.Control
 {
     public class PlayerController : MonoBehaviour
     {
-        Health health;       
+        Health health;
+        ActionStore actionStore;
 
         [System.Serializable]
         struct CursorMapping
@@ -20,20 +22,25 @@ namespace RPG.Control
         }
 
         [SerializeField] CursorMapping[] cursorMappings = null;
+        [SerializeField] KeyCode[] actionStoreKeys;
         [SerializeField] float maxNavMeshProjectionDistance = 1f;
-        
+
+        bool isDraggingUI = false;
+
         void Awake()
         {
             health = GetComponent<Health>();
+            actionStore = GetComponent<ActionStore>();
         }
-        
+
         void Update()
         {
+            if (InteractWithActionStore()) { return; }
             if (InteractWithUI()) { return; }
             if (health.IsDead())
             {
                 SetCursor(CursorType.None);
-                return; 
+                return;
             }
 
             if (InteractWithComponent()) { return; }
@@ -41,13 +48,25 @@ namespace RPG.Control
 
             SetCursor(CursorType.None);
         }
+        private bool InteractWithActionStore()
+        {
+            for (int i = 0; i < actionStoreKeys.Length; i++)
+            {
+                if (Input.GetKeyDown(actionStoreKeys[i]))
+                {
+                    actionStore.GetAction(i).Use(gameObject);
+                    return true;
+                }
+            }
+            return false;
+        }
 
         private bool InteractWithComponent()
         {
             RaycastHit[] hits = RaycastAllSorted();
             foreach (RaycastHit hit in hits)
             {
-                IRaycastable[] raycastables =  hit.transform.GetComponents<IRaycastable>();
+                IRaycastable[] raycastables = hit.transform.GetComponents<IRaycastable>();
                 foreach (IRaycastable raycastable in raycastables)
                 {
                     if (raycastable.HandleRaycast(this))
@@ -74,19 +93,26 @@ namespace RPG.Control
         }
 
         private bool InteractWithUI()
-        {                       
+        {
+            if (Input.GetMouseButtonUp(0))
+                isDraggingUI = false;
+
             if (EventSystem.current.IsPointerOverGameObject())
             {
+                if (Input.GetMouseButtonDown(0))
+                    isDraggingUI = true;
                 SetCursor(CursorType.UI);
                 return true;
             }
+            if (isDraggingUI)
+                return true;
 
-            return false;           
+            return false;
         }
-        
+
         private bool InteractWithMovement()
         {
-           
+
             Vector3 target;
             bool hasHit = RaycastNavMesh(out target);
             if (hasHit)
@@ -100,7 +126,7 @@ namespace RPG.Control
                 SetCursor(CursorType.Movement);
                 return true;
             }
-             return false;
+            return false;
         }
 
         private bool RaycastNavMesh(out Vector3 target)
