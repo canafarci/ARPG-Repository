@@ -15,7 +15,7 @@ MonoBehaviour:
   itemID: 8f97b465-129b-4367-99e2-075d0e21b677
   displayName: Fireball
   description: Fireballl
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 394e93ce356b57344903a08ff72fcab2, type: 3}
   pickup: {fileID: 1972159382501929061, guid: e4b09afb781f1994883ab4eb9834f831, type: 3}
   stackable: 0
   allowedEquipLocation: 5

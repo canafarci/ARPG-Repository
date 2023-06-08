@@ -15,7 +15,7 @@ MonoBehaviour:
   itemID: c3b805ce-a0dc-4ae8-acfb-4022456b7543
   displayName: 
   description: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
   pickup: {fileID: 5902861085470663333, guid: acbb308d72b87344da12827e55edeff6, type: 3}
   stackable: 0
   allowedEquipLocation: 5

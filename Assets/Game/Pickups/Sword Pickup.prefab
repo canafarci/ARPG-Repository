@@ -12,6 +12,22 @@ PrefabInstance:
       value: Curved Sword
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.329
       objectReference: {fileID: 0}
@@ -24,6 +40,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -33,14 +53,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
@@ -55,18 +67,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3417a46bfd2bcdb40a89215325a5afa0, type: 3}
 --- !u!1001 &8955833343797716301
@@ -76,10 +76,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7295733286074784883, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
         type: 3}
-      propertyPath: m_Name
-      value: Sword Pickup
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
         type: 3}
@@ -98,6 +98,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -109,16 +114,6 @@ PrefabInstance:
     - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 777959688452337104, guid: 0b4f9bd551bc4bf49b8175ef62300177,
@@ -136,6 +131,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1123927566435994670, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123927566435994670, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.338
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123927566435994670, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.885
+      objectReference: {fileID: 0}
+    - target: {fileID: 7295733286074784883, guid: 0b4f9bd551bc4bf49b8175ef62300177,
+        type: 3}
+      propertyPath: m_Name
+      value: Sword Pickup
+      objectReference: {fileID: 0}
     - target: {fileID: 8348197973560028323, guid: 0b4f9bd551bc4bf49b8175ef62300177,
         type: 3}
       propertyPath: m_Radius
@@ -143,13 +158,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8348197973560028323, guid: 0b4f9bd551bc4bf49b8175ef62300177,
         type: 3}
-      propertyPath: m_Center.z
-      value: 0.8109486
+      propertyPath: m_Center.x
+      value: -0.3641648
       objectReference: {fileID: 0}
     - target: {fileID: 8348197973560028323, guid: 0b4f9bd551bc4bf49b8175ef62300177,
         type: 3}
-      propertyPath: m_Center.x
-      value: -0.3641648
+      propertyPath: m_Center.z
+      value: 0.8109486
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b4f9bd551bc4bf49b8175ef62300177, type: 3}
